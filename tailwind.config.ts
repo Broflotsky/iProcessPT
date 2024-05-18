@@ -13,8 +13,39 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'orange-primary': '#FC4024',
+        'orange-primaryLigth': '#FF7A66',
+      }
+
     },
   },
-  plugins: [],
+  plugins: [
+    
+    function({addUtilities} : any){
+      const newUtilities = {
+        '.scrollbar-thin' :{
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'rgb(31 29) white',
+        },
+        '.scrollbar-webkit': {
+          '&::-webkit-scrollbar': {
+            width: '3px'
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent'
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: 'red',
+            borderRadius: '10px',
+            border: '3px solid #fff'
+          },
+        }
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }
+    
+  
+  ],
 };
 export default config;
